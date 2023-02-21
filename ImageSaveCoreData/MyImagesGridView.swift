@@ -40,7 +40,11 @@ struct MyImagesGridView: View {
           Button {
             self.showPicker.toggle()
           } label: {
-            Text("New Image").font(.footnote.bold()).foregroundColor(.blue)
+            Text("New Image")
+              .alignmentGuide(HorizontalAlignment.center) { d in
+                d[HorizontalAlignment.center]
+              }
+              .font(.footnote.bold()).foregroundColor(.blue)
           }
           .padding(8)
           .background(Color.blue.opacity(0.3))
