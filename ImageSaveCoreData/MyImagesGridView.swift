@@ -14,6 +14,8 @@ struct MyImagesGridView: View {
   @State private var croppedImage: UIImage?
   @State private var formType: FormType?
   
+  let columns = [GridItem(.adaptive(minimum: 100))]
+  
   var body: some View {
     NavigationStack {
       Group {
@@ -29,7 +31,24 @@ struct MyImagesGridView: View {
 //        }
         
         if !vm.imageEntity.isEmpty {
+          ScrollView {
+            LazyVGrid(columns: columns, spacing: 20) {
+              ForEach(vm.imageEntity) { myImage in
+                Button {
+                  formType = .update(myImage)
+                } label: {
+                  VStack {
+                    Image(uiImage: myImage.uiimage)
+                      .resizable().scaledToFill()
+                      .frame(width: 100, height: 100).clipped()
+                      .shadow(radius: 5)
+                    Text(myImage.nameView)
+                  }
+                }
 
+              }
+            }
+          }
         } else {
           Text("Select your first image")
         }

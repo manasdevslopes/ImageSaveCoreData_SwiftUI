@@ -5,7 +5,7 @@
 //  Created by MANAS VIJAYWARGIYA on 31/01/23.
 //
 
-import Foundation
+import UIKit
 
 extension MyImage {
   var nameView: String {
@@ -16,7 +16,12 @@ extension MyImage {
     id ?? ""
   }
   
-//  var uiImage: UIImage {
-//    
-//  }
+  var uiimage: UIImage {
+    if !imageID.isEmpty,
+       let image = FileManager().retrieveImage(with: imageID) {
+      return image
+    } else {
+      return UIImage(systemName: "photo")!
+    }
+  }
 }

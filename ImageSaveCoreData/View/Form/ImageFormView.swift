@@ -12,6 +12,7 @@ struct ImageFormView: View {
   @State private var croppedImage: UIImage?
   
   @ObservedObject var viewModel: FormViewModel
+  @EnvironmentObject var vm: ContainerViewModel
   
   @Environment(\.dismiss) var dismiss
   
@@ -39,11 +40,16 @@ struct ImageFormView: View {
             }
             
             Button {
-//              if viewModel.updating {
-//
-//              } else {
-//
-//              }
+              if viewModel.updating {
+                if let id = viewModel.id,
+                   let selectedObject = vm.imageEntity.first(where: { $0.id == id }) {
+                  selectedObject.name = viewModel.name
+                  FileManager().saveImage(with: id, image: viewModel.uiImage)
+                  vm.saveData()
+                }
+              } else {
+                vm.createNewObject(name: viewModel.name, image: viewModel.uiImage)
+              }
               dismiss()
             } label: {
               Image(systemName: "checkmark")
@@ -70,6 +76,10 @@ struct ImageFormView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
               Button {
                 // TODO: - Delete Functions
+                if let selectedObject = vm.imageEntity.first(where: { $0.id == viewModel.id }) {
+                  FileManager().deleteImage(with: selectedObject.imageID)
+                  vm.deleteObject(selectedObject)
+                }
                 dismiss()
               } label: {
                 Image(systemName: "trash").foregroundColor(.red)
@@ -91,6 +101,8 @@ struct ImageFormView: View {
 
 struct ImageFormView_Previews: PreviewProvider {
     static var previews: some View {
+      let persistenceController = PersistenceController.shared
       ImageFormView(viewModel: FormViewModel(UIImage(systemName: "photo")!))
+        .environmentObject(ContainerViewModel(context: persistenceController.container.viewContext))
     }
 }

@@ -23,7 +23,7 @@ class FormViewModel: ObservableObject {
   // for updating
   init(_ myImage: MyImage) {
     name = myImage.nameView
-    uiImage = UIImage(systemName: "photo")!
+    uiImage = myImage.uiimage
     id = myImage.imageID
   }
   

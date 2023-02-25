@@ -21,6 +21,7 @@
 		FDA95DF52989508B00D767F6 /* ImageFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA95DF42989508B00D767F6 /* ImageFormView.swift */; };
 		FDA95DF82989509E00D767F6 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA95DF72989509E00D767F6 /* FormViewModel.swift */; };
 		FDA95DFB298950C100D767F6 /* FormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA95DFA298950C100D767F6 /* FormType.swift */; };
+		FDCC396429A9FD3D003BA80B /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC396329A9FD3D003BA80B /* FileManager+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		FDA95DF42989508B00D767F6 /* ImageFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFormView.swift; sourceTree = "<group>"; };
 		FDA95DF72989509E00D767F6 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		FDA95DFA298950C100D767F6 /* FormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormType.swift; sourceTree = "<group>"; };
+		FDCC396329A9FD3D003BA80B /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				FDA95DE029890F8D00D767F6 /* Info.plist */,
 				FDA95DCD29890D3F00D767F6 /* ImageSaveCoreDataApp.swift */,
 				FDA95DCF29890D3F00D767F6 /* MyImagesGridView.swift */,
+				FDCC396229A9FD12003BA80B /* Extensions */,
 				FDA95DF9298950AB00D767F6 /* Model */,
 				FDA95DE6298913DC00D767F6 /* ViewModel */,
 				FDA95DDD29890E8300D767F6 /* Helper */,
@@ -171,6 +174,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FDCC396229A9FD12003BA80B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FDCC396329A9FD3D003BA80B /* FileManager+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -247,6 +258,7 @@
 				FDA95DF52989508B00D767F6 /* ImageFormView.swift in Sources */,
 				FDA95DEF29892D8B00D767F6 /* Crop.swift in Sources */,
 				FDA95DD029890D3F00D767F6 /* MyImagesGridView.swift in Sources */,
+				FDCC396429A9FD3D003BA80B /* FileManager+Extensions.swift in Sources */,
 				FDA95DEA2989151A00D767F6 /* MyImage+Extensions.swift in Sources */,
 				FDA95DE52989121500D767F6 /* Persistence.swift in Sources */,
 				FDA95DE32989112A00D767F6 /* MyImagesDataModel.xcdatamodeld in Sources */,

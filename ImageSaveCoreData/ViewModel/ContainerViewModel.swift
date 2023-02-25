@@ -15,6 +15,7 @@ class ContainerViewModel: ObservableObject {
   
   init(context: NSManagedObjectContext) {
     self.viewContext = context
+    fetchData()
   }
 }
 
@@ -31,5 +32,25 @@ extension ContainerViewModel {
       assertionFailure()
       #endif
     }
+  }
+  
+  func saveData() {
+    if viewContext.hasChanges {
+      try? viewContext.save()
+      fetchData()
+    }
+  }
+  
+  func createNewObject(name: String, image: UIImage) {
+    let newImage = MyImage(context: viewContext)
+    newImage.id = UUID().uuidString
+    newImage.name = name
+    saveData()
+    FileManager().saveImage(with: newImage.imageID, image: image)
+  }
+  
+  func deleteObject(_ selectedObject: MyImage) {
+    viewContext.delete(selectedObject)
+    saveData()
   }
 }
