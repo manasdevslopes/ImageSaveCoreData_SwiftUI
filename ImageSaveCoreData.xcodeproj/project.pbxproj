@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD6BFF4329AB6B5800514762 /* ShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6BFF4229AB6B5800514762 /* ShareService.swift */; };
+		FD6BFF4529AB77A000514762 /* icon-doc.png in Resources */ = {isa = PBXBuildFile; fileRef = FD6BFF4429AB77A000514762 /* icon-doc.png */; };
 		FDA95DCE29890D3F00D767F6 /* ImageSaveCoreDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA95DCD29890D3F00D767F6 /* ImageSaveCoreDataApp.swift */; };
 		FDA95DD029890D3F00D767F6 /* MyImagesGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA95DCF29890D3F00D767F6 /* MyImagesGridView.swift */; };
 		FDA95DD229890D4200D767F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDA95DD129890D4200D767F6 /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD6BFF4229AB6B5800514762 /* ShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareService.swift; sourceTree = "<group>"; };
+		FD6BFF4429AB77A000514762 /* icon-doc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-doc.png"; sourceTree = "<group>"; };
 		FDA95DCA29890D3F00D767F6 /* ImageSaveCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageSaveCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDA95DCD29890D3F00D767F6 /* ImageSaveCoreDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaveCoreDataApp.swift; sourceTree = "<group>"; };
 		FDA95DCF29890D3F00D767F6 /* MyImagesGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagesGridView.swift; sourceTree = "<group>"; };
@@ -55,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD6BFF4129AB6B4500514762 /* ShareService */ = {
+			isa = PBXGroup;
+			children = (
+				FD6BFF4229AB6B5800514762 /* ShareService.swift */,
+			);
+			path = ShareService;
+			sourceTree = "<group>";
+		};
 		FDA95DC129890D3F00D767F6 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +97,7 @@
 				FDA95DDB29890E6800D767F6 /* CoreData */,
 				FDA95DD129890D4200D767F6 /* Assets.xcassets */,
 				FDA95DDE29890F6D00D767F6 /* Launch Screen.storyboard */,
+				FD6BFF4429AB77A000514762 /* icon-doc.png */,
 				FDA95DD329890D4200D767F6 /* Preview Content */,
 			);
 			path = ImageSaveCoreData;
@@ -119,6 +132,7 @@
 		FDA95DDD29890E8300D767F6 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				FD6BFF4129AB6B4500514762 /* ShareService */,
 				FDA95DEB29892D6C00D767F6 /* ImageCroppingTool */,
 			);
 			path = Helper;
@@ -243,6 +257,7 @@
 				FDA95DDF29890F6D00D767F6 /* Launch Screen.storyboard in Resources */,
 				FDA95DD529890D4200D767F6 /* Preview Assets.xcassets in Resources */,
 				FDA95DD229890D4200D767F6 /* Assets.xcassets in Resources */,
+				FD6BFF4529AB77A000514762 /* icon-doc.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +276,7 @@
 				FDCC396429A9FD3D003BA80B /* FileManager+Extensions.swift in Sources */,
 				FDA95DEA2989151A00D767F6 /* MyImage+Extensions.swift in Sources */,
 				FDA95DE52989121500D767F6 /* Persistence.swift in Sources */,
+				FD6BFF4329AB6B5800514762 /* ShareService.swift in Sources */,
 				FDA95DE32989112A00D767F6 /* MyImagesDataModel.xcdatamodeld in Sources */,
 				FDA95DE82989141200D767F6 /* ContainerViewModel.swift in Sources */,
 				FDA95DF129892DE200D767F6 /* CustomImagePicker.swift in Sources */,
@@ -397,12 +413,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageSaveCoreData/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -428,12 +446,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageSaveCoreData/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

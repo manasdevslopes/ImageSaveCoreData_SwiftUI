@@ -22,7 +22,7 @@ extension FileManager {
       let imageData = try Data(contentsOf: validUrl)
       return UIImage(data: imageData)
     } catch {
-      print("Retrieve Imge------>", error.localizedDescription)
+      // print("Retrieve Imge------>", error.localizedDescription)
       return nil
     }
   }
@@ -78,5 +78,15 @@ extension FileManager {
       fileExtension = fileType.JPG.rawValue
     }
     return (fileExtension, imageData)
+  }
+  
+  /// - When recieved Image Object from someone else in json format then need to save the image in FileManager
+  func saveJSON(_ json: String, fileName: String) {
+    let url = URL.documentsDirectory.appending(path: fileName)
+    do {
+      try json.write(to: url, atomically: false, encoding: .utf8)
+    } catch {
+      print("Couldn't save json")
+    }
   }
 }

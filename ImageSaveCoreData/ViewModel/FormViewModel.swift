@@ -10,6 +10,13 @@ import SwiftUI
 class FormViewModel: ObservableObject {
   @Published var name: String = ""
   @Published var uiImage: UIImage
+  @Published var comment = ""
+  @Published var date = Date.distantPast
+  @Published var receivedFrom = ""
+  
+  var dateHidden: Bool {
+    date == Date.distantPast
+  }
   
   var id: String?
   
@@ -25,6 +32,9 @@ class FormViewModel: ObservableObject {
     name = myImage.nameView
     uiImage = myImage.uiimage
     id = myImage.imageID
+    comment = myImage.commentView
+    date = myImage.dateTaken ?? Date.distantPast
+    receivedFrom = myImage.receivedFromView
   }
   
   var inComplete: Bool {

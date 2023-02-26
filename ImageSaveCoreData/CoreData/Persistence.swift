@@ -14,6 +14,11 @@ struct PersistenceController {
   
   init(inMemory: Bool = false) {
     container = NSPersistentContainer(name: "MyImagesDataModel")
+    guard let path = container.persistentStoreDescriptions.first?.url?.path else  {
+      fatalError("Could not find persistence container")
+    }
+    print("Core Data Path ---->", path)
+    
     if inMemory {
       container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
     }

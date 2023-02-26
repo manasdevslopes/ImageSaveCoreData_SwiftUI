@@ -41,10 +41,12 @@ extension ContainerViewModel {
     }
   }
   
-  func createNewObject(name: String, image: UIImage) {
+  func createNewObject(name: String, image: UIImage, comment: String, date: Date) {
     let newImage = MyImage(context: viewContext)
     newImage.id = UUID().uuidString
     newImage.name = name
+    newImage.comment = comment
+    newImage.dateTaken = date
     saveData()
     FileManager().saveImage(with: newImage.imageID, image: image)
   }

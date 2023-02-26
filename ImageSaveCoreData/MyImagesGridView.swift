@@ -19,16 +19,16 @@ struct MyImagesGridView: View {
   var body: some View {
     NavigationStack {
       Group {
-//        if let croppedImage {
-//          Image(uiImage: croppedImage)
-//            .resizable()
-//            .aspectRatio(contentMode: .fit)
-//            .frame(width: 300, height: 400)
-//        } else {
-//          Text("No Image is Selected")
-//            .font(.caption)
-//            .foregroundColor(.gray)
-//        }
+        //        if let croppedImage {
+        //          Image(uiImage: croppedImage)
+        //            .resizable()
+        //            .aspectRatio(contentMode: .fit)
+        //            .frame(width: 300, height: 400)
+        //        } else {
+        //          Text("No Image is Selected")
+        //            .font(.caption)
+        //            .foregroundColor(.gray)
+        //        }
         
         if !vm.imageEntity.isEmpty {
           ScrollView {
@@ -45,10 +45,10 @@ struct MyImagesGridView: View {
                     Text(myImage.nameView)
                   }
                 }
-
               }
             }
           }
+          .padding()
         } else {
           Text("Select your first image")
         }
