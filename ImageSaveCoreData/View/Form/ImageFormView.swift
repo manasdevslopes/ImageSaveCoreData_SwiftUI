@@ -16,6 +16,8 @@ struct ImageFormView: View {
   @State private var croppedImage: UIImage?
   @State private var share: Bool = false
   @State private var name: String = ""
+  @State private var sendMail: Bool = false
+  @State private var email = EmailForm()
   
   var body: some View {
     NavigationStack {
@@ -66,14 +68,7 @@ struct ImageFormView: View {
           
           Button {
             if viewModel.updating {
-              if let id = viewModel.id,
-                 let selectedObject = vm.imageEntity.first(where: { $0.id == id }) {
-                selectedObject.name = viewModel.name
-                selectedObject.comment = viewModel.comment
-                selectedObject.dateTaken = viewModel.date
-                FileManager().saveImage(with: id, image: viewModel.uiImage)
-                vm.saveData()
-              }
+              updateImage()
             } else {
               vm.createNewObject(name: viewModel.name, image: viewModel.uiImage, comment: viewModel.comment, date: viewModel.date)
             }
@@ -118,6 +113,7 @@ struct ImageFormView: View {
               
               /// - Share Button
               Button {
+                updateImage()
                 share.toggle()
               } label: {
                 Image(systemName: "square.and.arrow.up")
@@ -144,14 +140,50 @@ struct ImageFormView: View {
                                           name: viewModel.name,
                                           receivedFrom: viewModel.receivedFrom)
           shareService.saveMyImage(codableImage)
+          
+          // Mail
+          email.messageHeader = "Sent from the My Images CoreData App"
+          email.fileName = "\(id).\(ShareService.ext)"
+          email.mimeType = "application/zip"
+          let attachmentURL = URL.documentsDirectory.appending(path: email.fileName)
+          if let data = try? Data(contentsOf: attachmentURL) {
+            email.data = data
+          }
+          if MailView.canSendMail {
+            sendMail.toggle()
+          } else {
+            print("This device doesn't support email.")
+            dismiss()
+          }
+          try? FileManager().removeItem(at: attachmentURL)
         }
-        dismiss()
       }
       Button("Cancel", role: .cancel) {}
     } message: {
       Text("Please enter your name")
     }
-
+    .sheet(isPresented: $sendMail) {
+      MailView(mailForm: $email) { result in
+        switch result {
+          case .success:
+            print("Email sent")
+          case .failure(let error):
+            print("Email_error", error.localizedDescription)
+        }
+        dismiss()
+      }
+    }
+  }
+  
+  func updateImage() {
+    if let id = viewModel.id,
+       let selectedObject = vm.imageEntity.first(where: { $0.id == id }) {
+      selectedObject.name = viewModel.name
+      selectedObject.comment = viewModel.comment
+      selectedObject.dateTaken = viewModel.date
+      FileManager().saveImage(with: id, image: viewModel.uiImage)
+      vm.saveData()
+    }
   }
 }
 

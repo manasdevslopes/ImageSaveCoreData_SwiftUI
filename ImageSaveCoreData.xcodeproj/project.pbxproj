@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD32904129B2585F00CDDF02 /* EmailForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD32904029B2585F00CDDF02 /* EmailForm.swift */; };
+		FD32904329B2595100CDDF02 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD32904229B2595100CDDF02 /* MailView.swift */; };
 		FD6BFF4329AB6B5800514762 /* ShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6BFF4229AB6B5800514762 /* ShareService.swift */; };
 		FD6BFF4529AB77A000514762 /* icon-doc.png in Resources */ = {isa = PBXBuildFile; fileRef = FD6BFF4429AB77A000514762 /* icon-doc.png */; };
 		FDA95DCE29890D3F00D767F6 /* ImageSaveCoreDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA95DCD29890D3F00D767F6 /* ImageSaveCoreDataApp.swift */; };
@@ -24,9 +26,12 @@
 		FDA95DF82989509E00D767F6 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA95DF72989509E00D767F6 /* FormViewModel.swift */; };
 		FDA95DFB298950C100D767F6 /* FormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA95DFA298950C100D767F6 /* FormType.swift */; };
 		FDCC396429A9FD3D003BA80B /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC396329A9FD3D003BA80B /* FileManager+Extensions.swift */; };
+		FDE1975B29B246FC00901B72 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = FDE1975A29B246FC00901B72 /* ZIPFoundation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD32904029B2585F00CDDF02 /* EmailForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailForm.swift; sourceTree = "<group>"; };
+		FD32904229B2595100CDDF02 /* MailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		FD6BFF4229AB6B5800514762 /* ShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareService.swift; sourceTree = "<group>"; };
 		FD6BFF4429AB77A000514762 /* icon-doc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-doc.png"; sourceTree = "<group>"; };
 		FDA95DCA29890D3F00D767F6 /* ImageSaveCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageSaveCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,12 +58,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDE1975B29B246FC00901B72 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD32903F29B2583A00CDDF02 /* Mail */ = {
+			isa = PBXGroup;
+			children = (
+				FD32904029B2585F00CDDF02 /* EmailForm.swift */,
+				FD32904229B2595100CDDF02 /* MailView.swift */,
+			);
+			path = Mail;
+			sourceTree = "<group>";
+		};
 		FD6BFF4129AB6B4500514762 /* ShareService */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +147,7 @@
 		FDA95DDD29890E8300D767F6 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				FD32903F29B2583A00CDDF02 /* Mail */,
 				FD6BFF4129AB6B4500514762 /* ShareService */,
 				FDA95DEB29892D6C00D767F6 /* ImageCroppingTool */,
 			);
@@ -212,6 +228,9 @@
 			dependencies = (
 			);
 			name = ImageSaveCoreData;
+			packageProductDependencies = (
+				FDE1975A29B246FC00901B72 /* ZIPFoundation */,
+			);
 			productName = ImageSaveCoreData;
 			productReference = FDA95DCA29890D3F00D767F6 /* ImageSaveCoreData.app */;
 			productType = "com.apple.product-type.application";
@@ -240,6 +259,9 @@
 				Base,
 			);
 			mainGroup = FDA95DC129890D3F00D767F6;
+			packageReferences = (
+				FDE1975929B246FB00901B72 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+			);
 			productRefGroup = FDA95DCB29890D3F00D767F6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -272,8 +294,10 @@
 				FDA95DF82989509E00D767F6 /* FormViewModel.swift in Sources */,
 				FDA95DF52989508B00D767F6 /* ImageFormView.swift in Sources */,
 				FDA95DEF29892D8B00D767F6 /* Crop.swift in Sources */,
+				FD32904329B2595100CDDF02 /* MailView.swift in Sources */,
 				FDA95DD029890D3F00D767F6 /* MyImagesGridView.swift in Sources */,
 				FDCC396429A9FD3D003BA80B /* FileManager+Extensions.swift in Sources */,
+				FD32904129B2585F00CDDF02 /* EmailForm.swift in Sources */,
 				FDA95DEA2989151A00D767F6 /* MyImage+Extensions.swift in Sources */,
 				FDA95DE52989121500D767F6 /* Persistence.swift in Sources */,
 				FD6BFF4329AB6B5800514762 /* ShareService.swift in Sources */,
@@ -489,6 +513,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FDE1975929B246FB00901B72 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:weichsel/ZIPFoundation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FDE1975A29B246FC00901B72 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FDE1975929B246FB00901B72 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		FDA95DE12989112A00D767F6 /* MyImagesDataModel.xcdatamodeld */ = {

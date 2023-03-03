@@ -21,6 +21,10 @@ struct ImageSaveCoreDataApp: App {
             .onAppear {
               print("Documentry Directory", URL.documentsDirectory.path(percentEncoded: true))
             }
+          /// - When JSON file received then it will open the url
+            .onOpenURL { url in
+              shareService.restore(url: url)
+            }
         }
     }
 }

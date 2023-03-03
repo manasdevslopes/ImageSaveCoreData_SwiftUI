@@ -73,20 +73,48 @@ extension FileManager {
     if let pngData = image.pngData() {
       imageData = pngData
       fileExtension = fileType.PNG.rawValue
-    } else if let jpegData = image.jpegData(compressionQuality: 0.6) {
+    } else if let jpegData = image.jpegData(compressionQuality: 1.0) {
       imageData = jpegData
       fileExtension = fileType.JPG.rawValue
     }
     return (fileExtension, imageData)
   }
   
-  /// - When recieved Image Object from someone else in json format then need to save the image in FileManager
+  /// - After receiving jsonString & filename with custom extension myimg from ShareService's saveMyImage func, here this func will create a path
   func saveJSON(_ json: String, fileName: String) {
     let url = URL.documentsDirectory.appending(path: fileName)
     do {
       try json.write(to: url, atomically: false, encoding: .utf8)
     } catch {
       print("Couldn't save json")
+    }
+  }
+  
+  /// - When recieved url from someone else in json format then need to decode it
+  func decodeJSON(from url: URL) -> CodableImage? {
+    do {
+      let data = try Data(contentsOf: url)
+      do {
+        return try JSONDecoder().decode(CodableImage.self, from: data)
+      } catch {
+        print("DECODE_JSON_DATA", error.localizedDescription)
+        return nil
+      }
+    } catch {
+      print("DECODE_JSON", error.localizedDescription)
+      return nil
+    }
+  }
+  
+  // Unzipped
+  func moveFile(oldURL: URL, newURL: URL) {
+    if fileExists(atPath: newURL.path) {
+      try? removeItem(at: newURL)
+    }
+    do {
+      try moveItem(at: oldURL, to: newURL)
+    } catch {
+      print("moveFile_error", error.localizedDescription)
     }
   }
 }

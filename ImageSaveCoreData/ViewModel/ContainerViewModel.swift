@@ -55,4 +55,30 @@ extension ContainerViewModel {
     viewContext.delete(selectedObject)
     saveData()
   }
+  
+  // Below function is for Create a new Image Object on change of shareService.codeableImage
+  func restoreMyImage(_ codeableImage: CodableImage?) {
+    if let codeableImage {
+      let newImage = MyImage(context: viewContext)
+      newImage.id = codeableImage.id
+      newImage.name = codeableImage.name
+      newImage.comment = codeableImage.comment
+      newImage.dateTaken = codeableImage.dateTaken
+      newImage.receivedFrom = codeableImage.receivedFrom
+      saveData()
+    }
+  }
+  
+  // Below function is for when shared image is an update of an existing image
+  /// - codeableImage is the updated version of an object. myImage is an existing version of the same object
+  func updateImageInfo(_ myImage: MyImage, _ codeableImage: CodableImage?) {
+    if let codeableImage {
+      myImage.id = codeableImage.id
+      myImage.name = codeableImage.name
+      myImage.comment = codeableImage.comment
+      myImage.dateTaken = codeableImage.dateTaken
+      myImage.receivedFrom = codeableImage.receivedFrom
+      saveData()
+    }
+  }
 }

@@ -9,10 +9,13 @@ import SwiftUI
 
 struct MyImagesGridView: View {
   @EnvironmentObject var vm: ContainerViewModel
+  /// - ShareService Environment Object
+  @EnvironmentObject var shareService: ShareService
   
   @State private var showPicker: Bool = false
   @State private var croppedImage: UIImage?
   @State private var formType: FormType?
+  @State private var imageExists: Bool = false
   
   let columns = [GridItem(.adaptive(minimum: 100))]
   
@@ -78,6 +81,23 @@ struct MyImagesGridView: View {
         }
       }
       .sheet(item: $formType) { $0 }
+      .onChange(of: shareService.codeableImage) { codeableImage in
+        if let codeableImage {
+          if let myImage = vm.imageEntity.first(where: { $0.id == codeableImage.id }) {
+            // THis is an update of an existing image
+            vm.updateImageInfo(myImage, codeableImage)
+            shareService.codeableImage = nil
+            imageExists.toggle()
+          } else {
+            // Create a new Image Object
+            vm.restoreMyImage(codeableImage)
+            shareService.codeableImage = nil
+          }
+        }
+      }
+      .alert("Image Updated", isPresented: $imageExists) {
+        Button("Ok") {}
+      }
     }
   }
 }
@@ -87,5 +107,6 @@ struct MyImagesGridView_Previews: PreviewProvider {
     let persistenceController = PersistenceController.shared
     MyImagesGridView()
       .environmentObject(ContainerViewModel(context: persistenceController.container.viewContext))
+      .environmentObject(ShareService())
   }
 }
