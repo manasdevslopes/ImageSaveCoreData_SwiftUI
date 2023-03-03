@@ -37,6 +37,7 @@ class ShareService: ObservableObject {
   /// - while getting the url, then extension needs to be equal to ext, then it will be send to FileManager() decodeJSON func then the response will be saved to optional published ppt.
   func restore(url: URL) {
     let fileName = url.lastPathComponent
+    print("fileName----->", fileName)
     let jsonName = fileName.replacingOccurrences(of: ShareService.ext, with: "json")
     let zipName = fileName.replacingOccurrences(of: ShareService.ext, with: "zip")
     let imgName = fileName.replacingOccurrences(of: ShareService.ext, with: "png") // TODO: - check for JPG or PNG
